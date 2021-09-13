@@ -84,7 +84,7 @@ params:
       - image: pic01.jpg
         subtitle: Hello World!
         title: About Me - Pre Course Assignment
-        url: blogs/aliquam
+        url: blogs/hamish
       - image: pic02.jpg
         subtitle: Feugiat Amet Tempus
         title: Tempus
