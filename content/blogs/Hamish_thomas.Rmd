@@ -140,9 +140,6 @@ As expected, continents whose economic growth primarily accelerated before the 1
 
 
 
-
-> Type your answer after this blockquote.
-
 # Task 3: Brexit vote analysis
 
 We will have a look at the results of the 2016 Brexit vote in the UK. First we read the data using `read_csv()` and have a quick glimpse at the data (shown below).
