@@ -81,7 +81,7 @@ params:
   tiles:
     enable: yes
     showcase:
-      - image: pic01.jpg
+      - image: Weald.jpeg
         subtitle: Hello World!
         title: About Me - Pre Course Assignment
         url: blogs/hamish
