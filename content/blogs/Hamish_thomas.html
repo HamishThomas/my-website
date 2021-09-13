@@ -30,16 +30,13 @@ title: Hamish Thomas - Pre-course Assignment
 <li>Guitar</li>
 <li>Football (which I like to coach, play and watch - primarily as an over-optimistic supporter of Tottenham Hotspur).</li>
 </ul>
-<div class="figure">
-<img src="SpursStadium.JPG" alt="" />
-<p class="caption">A photo I took from the North Stand at the Tottenham Hotspur Stadium in 2019 after a 1-0 win against Brighton in which Christian Eriksen scored the only goal.</p>
-</div>
+<p><img src="/blogs/Hamish_thomas_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><em>Above:</em> A photo I took from the North Stand at the <strong>Tottenham</strong> <strong>Hotspur</strong> <strong>Stadium</strong> in 2019 after a 1-0 win against Brighton, in which <strong>Christian</strong> <strong>Eriksen</strong> scored the only goal.</p>
 </div>
 </div>
 <div id="task-2-gapminder-country-comparison" class="section level1">
 <h1>Task 2: <code>gapminder</code> country comparison</h1>
 <p>You have seen the <code>gapminder</code> dataset that has data on life expectancy, population, and GDP per capita for 142 countries from 1952 to 2007. Below is a ‘glimpse’ of the data frame, as well as the first 20 lines within the ‘table’.</p>
-<pre class="r"><code>glimpse(gapminder)</code></pre>
 <pre><code>## Rows: 1,704
 ## Columns: 6
 ## $ country   &lt;fct&gt; &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, …
@@ -48,7 +45,6 @@ title: Hamish Thomas - Pre-course Assignment
 ## $ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.8…
 ## $ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…
 ## $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134, …</code></pre>
-<pre class="r"><code>head(gapminder, 20) # look at the first 20 rows of the dataframe</code></pre>
 <pre><code>## # A tibble: 20 × 6
 ##    country     continent  year lifeExp      pop gdpPercap
 ##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
@@ -74,52 +70,21 @@ title: Hamish Thomas - Pre-course Assignment
 ## 20 Albania     Europe     1987    72    3075321     3739.</code></pre>
 <p>Your task is to produce two graphs of how life expectancy has changed over the years for the <code>country</code> and the <code>continent</code> you come from.</p>
 <p>We will now produce three graphs which show how the life expectancy for different regions evolves over time.</p>
-<pre class="r"><code>country_data &lt;- gapminder %&gt;% 
-            filter(country == &quot;United Kingdom&quot;) 
-continent_data &lt;- gapminder %&gt;% 
-            filter(continent == &quot;Europe&quot;)</code></pre>
 <div id="life-expectancy-in-the-united-kingdom-over-time." class="section level2">
 <h2>Life Expectancy in the United Kingdom over time.</h2>
 <p>First, we plot of life expectancy over time for a single country of choice - the <em>United Kingdom</em>. This is done by mapping <code>year</code> on the x-axis, and <code>lifeExp</code> on the y-axis.</p>
-<pre class="r"><code>plot1 &lt;- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
-   geom_point() +
-   geom_smooth(se = FALSE)+
-   NULL </code></pre>
-<pre class="r"><code>plot1&lt;- plot1 +
-   labs(title = &quot;Average UK Life Expectancy over time.&quot;,
-       x = &quot;Year&quot;,
-       y = &quot;Average Life Expectancy&quot;) +
-   NULL
-
-plot1</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/blogs/Hamish_thomas_files/figure-html/lifeExp_one_country_with_label-1.png" width="672" /></p>
 </div>
 <div id="life-expectancy-in-europe-over-time." class="section level2">
 <h2>Life Expectancy in Europe over time.</h2>
 <p>Secondly, we produce a plot for all countries in <em>Europe</em>. This is done by mapping the <code>country</code> variable to the colour aesthetic. We also map <code>country</code> to the <code>group</code> aesthetic, so that all points for each country are grouped together.</p>
-<pre class="r"><code>ggplot(continent_data, mapping = aes(x = year  , y = lifeExp , colour = country , group = country))+
-  geom_line() + 
-  geom_smooth(se = FALSE) +
-  labs(title = &quot;Average Life Expectancy over time for European Countries.&quot;,
-       x = &quot;Year&quot;,
-       y = &quot;Average Life Expectancy&quot;) +
-  NULL</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/blogs/Hamish_thomas_files/figure-html/lifeExp_one_continent-1.png" width="672" /></p>
 </div>
 <div id="life-expectancy-in-different-continents-over-time." class="section level2">
 <h2>Life Expectancy in different continents over time.</h2>
 <p>Finally, using the original <code>gapminder</code> data, we produce a life expectancy over time graph, grouped (or faceted) by continent. The legend is removed by adding the <code>theme(legend.position="none")</code> in the end of our ggplot.</p>
-<pre class="r"><code>ggplot(data = gapminder , mapping = aes(x = year , y = lifeExp  , colour = continent ))+
-  geom_point() + 
-  geom_smooth(se = FALSE) +
-  facet_wrap(~continent) +
-  theme(legend.position=&quot;none&quot;) + #remove all legends
-  labs(title = &quot;Average Life Expectancy over time for different Continents.&quot;,
-       x = &quot;Year&quot;,
-       y = &quot;Average Life Expectancy&quot;) +
-  NULL</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/blogs/Hamish_thomas_files/figure-html/lifeExp_facet_by_continent-1.png" width="672" /></p>
 <div id="given-these-trends-what-can-you-say-about-life-expectancy-since-1952" class="section level3">
@@ -136,8 +101,6 @@ plot1</code></pre>
 <div id="task-3-brexit-vote-analysis" class="section level1">
 <h1>Task 3: Brexit vote analysis</h1>
 <p>We will have a look at the results of the 2016 Brexit vote in the UK. First we read the data using <code>read_csv()</code> and have a quick glimpse at the data (shown below).</p>
-<pre class="r"><code>brexit_results &lt;- read_csv(here::here(&quot;data&quot;,&quot;brexit_results.csv&quot;))
-glimpse(brexit_results)</code></pre>
 <pre><code>## Rows: 632
 ## Columns: 11
 ## $ Seat        &lt;chr&gt; &quot;Aldershot&quot;, &quot;Aldridge-Brownhills&quot;, &quot;Altrincham and Sale W…
@@ -154,55 +117,15 @@ glimpse(brexit_results)</code></pre>
 <p>The data comes from <a href="https://www.thecrosstab.com/">Elliott Morris</a>, who cleaned it and made it available through his <a href="https://www.datacamp.com/courses/analyzing-election-and-polling-data-in-r">DataCamp class on analysing election and polling data in R</a>.</p>
 <p>Our main outcome variable (or y) is <code>leave_share</code>, which is the percent of votes cast in favour of Brexit, or leaving the EU. Each row is a UK <a href="https://en.wikipedia.org/wiki/United_Kingdom_Parliament_constituencies">parliament constituency</a>.</p>
 <p>To get a sense of the spread, or distribution, of the data, we can plot a <em>histogram</em>, a <em>density</em> <em>plot</em>, and the empirical <em>cumulative</em> <em>distribution</em> <em>function</em> of the leave % in all constituencies.</p>
-<pre class="r"><code># histogram
-ggplot(brexit_results, aes(x = leave_share)) +
-  geom_histogram(binwidth = 2.5) +
-  labs(title = &quot;Brexit Leave Share - Histogram&quot;,
-       x = &quot;Leave Share [%]&quot;,
-       y = &quot;Frequency of Constituencies&quot;,
-       subtitle = &quot;Figure 3.1&quot;)</code></pre>
-<p><img src="/blogs/Hamish_thomas_files/figure-html/brexit_histogram-1.png" width="672" /></p>
-<pre class="r"><code># density plot-- think smoothed histogram
-ggplot(brexit_results, aes(x = leave_share)) +
-  geom_density()+
-  labs(title = &quot;Brexit Leave Share - Density Plot&quot;,
-       x = &quot;Leave Share [%]&quot;,
-       y = &quot;Frequency of Constituencies&quot;,
-       subtitle = &quot;Figure 3.2&quot;)</code></pre>
-<p><img src="/blogs/Hamish_thomas_files/figure-html/brexit_histogram-2.png" width="672" /></p>
-<pre class="r"><code># The empirical cumulative distribution function (ECDF) 
-ggplot(brexit_results, aes(x = leave_share)) +
-  stat_ecdf(geom = &quot;step&quot;, pad = FALSE) +
-  scale_y_continuous(labels = scales::percent)+
-  labs(title = &quot;Brexit Leave Share - Cumulative Distribution Function Plot&quot;,
-       x = &quot;Leave Share [%]&quot;,
-       y = &quot;Frequency of Constituencies&quot;,
-       subtitle = &quot;Figure 3.3&quot;)</code></pre>
-<p><img src="/blogs/Hamish_thomas_files/figure-html/brexit_histogram-3.png" width="672" /></p>
+<p><img src="/blogs/Hamish_thomas_files/figure-html/brexit_histogram-1.png" width="672" /><img src="/blogs/Hamish_thomas_files/figure-html/brexit_histogram-2.png" width="672" /><img src="/blogs/Hamish_thomas_files/figure-html/brexit_histogram-3.png" width="672" /></p>
 <p>One common explanation for the Brexit outcome was fear of immigration and opposition to the EU’s more open border policy. We can check the relationship (or correlation) between the proportion of native born residents (<code>born_in_uk</code>) in a constituency and its <code>leave_share</code>. To do this, let us get the correlation between the two variables</p>
-<pre class="r"><code>brexit_results %&gt;% 
-  select(leave_share, born_in_uk) %&gt;% 
-  cor()</code></pre>
 <pre><code>##             leave_share born_in_uk
 ## leave_share   1.0000000  0.4934295
 ## born_in_uk    0.4934295  1.0000000</code></pre>
 <p>The correlation is almost 0.5, which shows that the two variables are positively correlated.</p>
 <p>We can also create a scatterplot between these two variables using <code>geom_point</code>. We also add the best fit line, using <code>geom_smooth(method = "lm")</code>.</p>
-<pre class="r"><code>ggplot(brexit_results, aes(x = born_in_uk, y = leave_share)) +
-  geom_point(alpha=0.3) +
-  
-  # add a smoothing line, and use method=&quot;lm&quot; to get the best straight-line
-  geom_smooth(method = &quot;lm&quot;) + 
-  
-  # use a white background and frame the plot with a black box
-  theme_bw() +
-  labs(title = &quot;Relationship between the proportion of native born residents and leave share.&quot;,
-       x = &quot;Born in the UK [%]&quot;,
-       y = &quot;Leave Share [%]&quot;,
-       subtitle = &quot;Figure 3.4&quot;)</code></pre>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/blogs/Hamish_thomas_files/figure-html/brexit_immigration_plot-1.png" width="672" /></p>
-<pre class="r"><code>  NULL</code></pre>
 <pre><code>## NULL</code></pre>
 <div id="what-can-you-say-about-the-relationship-shown-above" class="section level3">
 <h3>What can you say about the relationship shown above?</h3>
@@ -213,14 +136,6 @@ ggplot(brexit_results, aes(x = leave_share)) +
 <h1>Task 4: Animal rescue incidents attended by the London Fire Brigade</h1>
 <p><a href="https://data.london.gov.uk/dataset/animal-rescue-incidents-attended-by-lfb">The London Fire Brigade</a> attends a range of non-fire incidents (which we call ‘special services’). These ‘special services’ include assistance to animals that may be trapped or in distress. The data is provided from January 2009 and is updated monthly. A range of information is supplied for each incident including some location information (postcode, borough, ward), as well as the data/time of the incidents. We do not routinely record data about animal deaths or injuries.</p>
 <p>Please note that any cost included is a notional cost calculated based on the length of time rounded up to the nearest hour spent by Pump, Aerial and FRU appliances at the incident and charged at the current Brigade hourly rate. A ‘glimpse’ of the dataset is shown below:</p>
-<pre class="r"><code>url &lt;- &quot;https://data.london.gov.uk/download/animal-rescue-incidents-attended-by-lfb/8a7d91c2-9aec-4bde-937a-3998f4717cd8/Animal%20Rescue%20incidents%20attended%20by%20LFB%20from%20Jan%202009.csv&quot;
-
-animal_rescue &lt;- read_csv(url,
-                          locale = locale(encoding = &quot;CP1252&quot;)) %&gt;% 
-  janitor::clean_names()
-
-
-glimpse(animal_rescue)</code></pre>
 <pre><code>## Rows: 7,772
 ## Columns: 31
 ## $ incident_number               &lt;chr&gt; &quot;139091&quot;, &quot;275091&quot;, &quot;2075091&quot;, &quot;2872091&quot;…
@@ -255,9 +170,6 @@ glimpse(animal_rescue)</code></pre>
 ## $ latitude                      &lt;chr&gt; &quot;NULL&quot;, &quot;51.39095371&quot;, &quot;51.36894086&quot;, &quot;5…
 ## $ longitude                     &lt;chr&gt; &quot;NULL&quot;, &quot;-0.064166887&quot;, &quot;-0.161985191&quot;, …</code></pre>
 <p>One of the more useful things one can do with any data set is quick counts, namely to see how many observations fall within one category. For instance, if we wanted to count the number of incidents by year, we would either use <code>group_by()... summarise()</code> or, simply <a href="https://dplyr.tidyverse.org/reference/count.html"><code>count()</code></a></p>
-<pre class="r"><code>animal_rescue %&gt;% 
-  dplyr::group_by(cal_year) %&gt;% 
-  summarise(count=n())</code></pre>
 <pre><code>## # A tibble: 13 × 2
 ##    cal_year count
 ##       &lt;dbl&gt; &lt;int&gt;
@@ -274,8 +186,6 @@ glimpse(animal_rescue)</code></pre>
 ## 11     2019   604
 ## 12     2020   758
 ## 13     2021   547</code></pre>
-<pre class="r"><code>animal_rescue %&gt;% 
-  count(cal_year, name=&quot;count&quot;)</code></pre>
 <pre><code>## # A tibble: 13 × 2
 ##    cal_year count
 ##       &lt;dbl&gt; &lt;int&gt;
@@ -293,18 +203,6 @@ glimpse(animal_rescue)</code></pre>
 ## 12     2020   758
 ## 13     2021   547</code></pre>
 <p>Let us try to see how many incidents we have by animal group. Again, we can do this either using group_by() and summarise(), or by using count()…</p>
-<pre class="r"><code>animal_rescue %&gt;% 
-  group_by(animal_group_parent) %&gt;% 
-  
-  #group_by and summarise will produce a new column with the count in each animal group
-  summarise(count = n()) %&gt;% 
-  
-  # mutate adds a new column; here we calculate the percentage
-  mutate(percent = round(100*count/sum(count),2)) %&gt;% 
-  
-  # arrange() sorts the data by percent. Since the default sorting is min to max and we would like to see it sorted
-  # in descending order (max to min), we use arrange(desc()) 
-  arrange(desc(percent))</code></pre>
 <pre><code>## # A tibble: 28 × 3
 ##    animal_group_parent              count percent
 ##    &lt;chr&gt;                            &lt;int&gt;   &lt;dbl&gt;
@@ -319,13 +217,6 @@ glimpse(animal_rescue)</code></pre>
 ##  9 Squirrel                            66    0.85
 ## 10 Unknown - Heavy Livestock Animal    50    0.64
 ## # … with 18 more rows</code></pre>
-<pre class="r"><code>animal_rescue %&gt;% 
-  
-  #count does the same thing as group_by and summarise
-  # name = &quot;count&quot; will call the column with the counts &quot;count&quot; ( exciting, I know)
-  # and &#39;sort=TRUE&#39; will sort them from max to min
-  count(animal_group_parent, name=&quot;count&quot;, sort=TRUE) %&gt;% 
-  mutate(percent = round(100*count/sum(count),2))</code></pre>
 <pre><code>## # A tibble: 28 × 3
 ##    animal_group_parent              count percent
 ##    &lt;chr&gt;                            &lt;int&gt;   &lt;dbl&gt;
@@ -353,38 +244,9 @@ glimpse(animal_rescue)</code></pre>
 <li>Plot a boxplot to get a feel for the distribution of <code>incident_notional_cost</code> by <code>animal_group_parent</code>.</li>
 </ol>
 <p>Before we go on, however, we need to fix <code>incident_notional_cost</code> as it is stored as a <code>chr</code>, or character, rather than a number.</p>
-<pre class="r"><code># what type is variable incident_notional_cost from dataframe `animal_rescue`
-typeof(animal_rescue$incident_notional_cost)</code></pre>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="r"><code># readr::parse_number() will convert any numerical values stored as characters into numbers
-animal_rescue &lt;- animal_rescue %&gt;% 
-
-  # we use mutate() to use the parse_number() function and overwrite the same variable
-  mutate(incident_notional_cost = parse_number(incident_notional_cost))
-
-# incident_notional_cost from dataframe `animal_rescue` is now &#39;double&#39; or numeric
-typeof(animal_rescue$incident_notional_cost)</code></pre>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <p>Now that incident_notional_cost is numeric, let us quickly calculate summary statistics for each animal group.</p>
-<pre class="r"><code>animal_rescue %&gt;% 
-  
-  # group by animal_group_parent
-  group_by(animal_group_parent) %&gt;% 
-  
-  # filter resulting data, so each group has at least 6 observations
-  filter(n()&gt;6) %&gt;% 
-  
-  # summarise() will collapse all values into 3 values: the mean, median, and count  
-  # we use na.rm=TRUE to make sure we remove any NAs, or cases where we do not have the incident cos
-  summarise(mean_incident_cost = mean (incident_notional_cost, na.rm=TRUE),
-            median_incident_cost = median (incident_notional_cost, na.rm=TRUE),
-            sd_incident_cost = sd (incident_notional_cost, na.rm=TRUE),
-            min_incident_cost = min (incident_notional_cost, na.rm=TRUE),
-            max_incident_cost = max (incident_notional_cost, na.rm=TRUE),
-            count = n()) %&gt;% 
-  
-  # sort the resulting data in descending order. You choose whether to sort by count or mean cost.
-  arrange(desc(mean_incident_cost))</code></pre>
 <pre><code>## # A tibble: 16 × 7
 ##    animal_group_parent      mean_incident_co… median_incident_… sd_incident_cost
 ##    &lt;chr&gt;                                &lt;dbl&gt;             &lt;dbl&gt;            &lt;dbl&gt;
@@ -411,23 +273,7 @@ typeof(animal_rescue$incident_notional_cost)</code></pre>
 <h3>Compare the mean and the median for each animal group. waht do you think this is telling us?</h3>
 <p>The median is typically lower than the mean for most of the animal groups. This suggests that there are some large positive outliers that are potentially disproportionately increasing the mean and introducing bias.</p>
 <p>Finally, let us plot a few plots that show the distribution of incident_cost for each animal group.</p>
-<pre class="r"><code># base_plot
-base_plot &lt;- animal_rescue %&gt;% 
-  group_by(animal_group_parent) %&gt;% 
-  filter(n()&gt;6) %&gt;% 
-  ggplot(aes(x=incident_notional_cost))+
-  facet_wrap(~animal_group_parent, scales = &quot;free&quot;)+
-  theme_bw()
-
-base_plot + geom_histogram()</code></pre>
-<p><img src="/blogs/Hamish_thomas_files/figure-html/plots_on_incident_cost_by_animal_group-1.png" width="672" /></p>
-<pre class="r"><code>base_plot + geom_density()</code></pre>
-<p><img src="/blogs/Hamish_thomas_files/figure-html/plots_on_incident_cost_by_animal_group-2.png" width="672" /></p>
-<pre class="r"><code>base_plot + geom_boxplot()</code></pre>
-<p><img src="/blogs/Hamish_thomas_files/figure-html/plots_on_incident_cost_by_animal_group-3.png" width="672" /></p>
-<pre class="r"><code>base_plot + stat_ecdf(geom = &quot;step&quot;, pad = FALSE) +
-  scale_y_continuous(labels = scales::percent)</code></pre>
-<p><img src="/blogs/Hamish_thomas_files/figure-html/plots_on_incident_cost_by_animal_group-4.png" width="672" /></p>
+<p><img src="/blogs/Hamish_thomas_files/figure-html/plots_on_incident_cost_by_animal_group-1.png" width="672" /><img src="/blogs/Hamish_thomas_files/figure-html/plots_on_incident_cost_by_animal_group-2.png" width="672" /><img src="/blogs/Hamish_thomas_files/figure-html/plots_on_incident_cost_by_animal_group-3.png" width="672" /><img src="/blogs/Hamish_thomas_files/figure-html/plots_on_incident_cost_by_animal_group-4.png" width="672" /></p>
 </div>
 <div id="which-of-these-four-graphs-do-you-think-best-communicates-the-variability-of-the-incident_notional_cost-values" class="section level3">
 <h3>Which of these four graphs do you think best communicates the variability of the <code>incident_notional_cost</code> values?</h3>

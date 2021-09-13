@@ -19,6 +19,8 @@ library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
 library(gapminder)  # gapminder dataset
 library(here)
 library(janitor)
+library(grid)
+library(png)
 ```
 
 
@@ -35,7 +37,13 @@ My previous professional experiences vary from the engineering sector, where I w
 * Guitar 
 * Football (which I like to coach, play and watch - primarily as an over-optimistic supporter of Tottenham Hotspur). 
 
-![A photo I took from the North Stand at the Tottenham Hotspur Stadium in 2019 after a 1-0 win against Brighton in which Christian Eriksen scored the only goal.](SpursStadium.JPG)
+```{r, echo=FALSE}
+img <- readPNG("IMG_1553.png", info = TRUE)
+grid.raster(img, hjust = 0.47 , height = 1.02)
+```
+
+*Above:* A photo I took from the North Stand at the **Tottenham** **Hotspur** **Stadium** in 2019 after a 1-0 win against Brighton, in which **Christian** **Eriksen** scored the only goal.
+
 
 
 
@@ -45,7 +53,7 @@ My previous professional experiences vary from the engineering sector, where I w
 You have seen the `gapminder` dataset that has data on life expectancy, population, and GDP per capita for 142 countries from 1952 to 2007. Below is a 'glimpse' of the data frame, as well as the first 20 lines within the 'table'. 
 
 
-```{r}
+```{r, echo=FALSE}
 glimpse(gapminder)
 head(gapminder, 20) # look at the first 20 rows of the dataframe
 ```
@@ -56,7 +64,7 @@ Your task is to produce two graphs of how life expectancy has changed over the y
 
 We will now produce three graphs which show how the life expectancy for different regions evolves over time. 
 
-```{r}
+```{r, echo=FALSE}
 country_data <- gapminder %>% 
             filter(country == "United Kingdom") 
 continent_data <- gapminder %>% 
@@ -69,14 +77,14 @@ continent_data <- gapminder %>%
 
 First, we plot of life expectancy over time for a single country of choice - the *United Kingdom*. This is done by mapping `year` on the x-axis, and `lifeExp` on the y-axis.
 
-```{r, lifeExp_one_country}
+```{r, lifeExp_one_country, echo=FALSE}
 plot1 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
    geom_point() +
    geom_smooth(se = FALSE)+
    NULL 
 ```
 
-```{r, lifeExp_one_country_with_label}
+```{r, lifeExp_one_country_with_label, echo=FALSE}
 plot1<- plot1 +
    labs(title = "Average UK Life Expectancy over time.",
        x = "Year",
@@ -91,7 +99,7 @@ plot1
 
 Secondly, we produce a plot for all countries in *Europe*. This is done by mapping the `country` variable to the colour aesthetic. We also map `country` to the `group` aesthetic, so that all points for each country are grouped together.
 
-```{r lifeExp_one_continent}
+```{r lifeExp_one_continent, echo=FALSE}
 ggplot(continent_data, mapping = aes(x = year  , y = lifeExp , colour = country , group = country))+
   geom_line() + 
   geom_smooth(se = FALSE) +
@@ -107,7 +115,7 @@ ggplot(continent_data, mapping = aes(x = year  , y = lifeExp , colour = country 
 
 Finally, using the original `gapminder` data, we produce a life expectancy over time graph, grouped (or faceted) by continent. The legend is removed by adding the `theme(legend.position="none")` in the end of our ggplot.
 
-```{r lifeExp_facet_by_continent}
+```{r lifeExp_facet_by_continent, echo=FALSE}
 ggplot(data = gapminder , mapping = aes(x = year , y = lifeExp  , colour = continent ))+
   geom_point() + 
   geom_smooth(se = FALSE) +
@@ -139,7 +147,7 @@ As expected, continents whose economic growth primarily accelerated before the 1
 
 We will have a look at the results of the 2016 Brexit vote in the UK. First we read the data using `read_csv()` and have a quick glimpse at the data (shown below).
 
-```{r load_brexit_data, warning=FALSE, message=FALSE}
+```{r load_brexit_data, warning=FALSE, message=FALSE, echo=FALSE}
 brexit_results <- read_csv(here::here("data","brexit_results.csv"))
 glimpse(brexit_results)
 ```
@@ -150,7 +158,7 @@ Our main outcome variable (or y) is `leave_share`, which is the percent of votes
 
 To get a sense of the spread, or distribution, of the data, we can plot a *histogram*, a *density* *plot*, and the empirical *cumulative* *distribution* *function* of the leave % in all constituencies.
 
-```{r brexit_histogram, warning=FALSE, message=FALSE}
+```{r brexit_histogram, warning=FALSE, message=FALSE, echo=FALSE}
 
 # histogram
 ggplot(brexit_results, aes(x = leave_share)) +
@@ -185,7 +193,7 @@ ggplot(brexit_results, aes(x = leave_share)) +
 
 One common explanation for the Brexit outcome was fear of immigration and opposition to the EU's more open border policy. We can check the relationship (or correlation) between the proportion of native born residents (`born_in_uk`) in a constituency and its `leave_share`. To do this, let us get the correlation between the two variables
 
-```{r brexit_immigration_correlation}
+```{r brexit_immigration_correlation, echo=FALSE}
 brexit_results %>% 
   select(leave_share, born_in_uk) %>% 
   cor()
@@ -196,7 +204,7 @@ The correlation is almost 0.5, which shows that the two variables are positively
 
 We can also create a scatterplot between these two variables using `geom_point`. We also add the best fit line, using `geom_smooth(method = "lm")`.
 
-```{r brexit_immigration_plot}
+```{r brexit_immigration_plot, echo=FALSE}
 ggplot(brexit_results, aes(x = born_in_uk, y = leave_share)) +
   geom_point(alpha=0.3) +
   
@@ -226,7 +234,7 @@ This relationship clearly shows that constituencies with a larger percentage of 
 
 Please note that any cost included is a notional cost calculated based on the length of time rounded up to the nearest hour spent by Pump, Aerial and FRU appliances at the incident and charged at the current Brigade hourly rate. A 'glimpse' of the dataset is shown below: 
 
-```{r load_animal_rescue_data, warning=FALSE, message=FALSE}
+```{r load_animal_rescue_data, warning=FALSE, message=FALSE, echo=FALSE}
 
 url <- "https://data.london.gov.uk/download/animal-rescue-incidents-attended-by-lfb/8a7d91c2-9aec-4bde-937a-3998f4717cd8/Animal%20Rescue%20incidents%20attended%20by%20LFB%20from%20Jan%202009.csv"
 
@@ -240,7 +248,7 @@ glimpse(animal_rescue)
 
 One of the more useful things one can do with any data set is quick counts, namely to see how many observations fall within one category. For instance, if we wanted to count the number of incidents by year, we would either use `group_by()... summarise()` or, simply [`count()`](https://dplyr.tidyverse.org/reference/count.html)
 
-```{r, instances_by_calendar_year}
+```{r, instances_by_calendar_year, echo=FALSE}
 
 animal_rescue %>% 
   dplyr::group_by(cal_year) %>% 
@@ -254,7 +262,7 @@ animal_rescue %>%
 
 Let us try to see how many incidents we have by animal group. Again, we can do this either using group_by() and summarise(), or by using count()...
 
-```{r, animal_group_percentages}
+```{r, animal_group_percentages, echo=FALSE}
 animal_rescue %>% 
   group_by(animal_group_parent) %>% 
   
@@ -299,7 +307,7 @@ There is two things we will do:
 
 Before we go on, however, we need to fix `incident_notional_cost` as it is stored as a `chr`, or character, rather than a number.
 
-```{r, parse_incident_cost,message=FALSE, warning=FALSE}
+```{r, parse_incident_cost,message=FALSE, warning=FALSE, echo=FALSE}
 
 # what type is variable incident_notional_cost from dataframe `animal_rescue`
 typeof(animal_rescue$incident_notional_cost)
@@ -318,7 +326,7 @@ typeof(animal_rescue$incident_notional_cost)
 Now that incident_notional_cost is numeric, let us quickly calculate summary statistics for each animal group. 
 
 
-```{r, stats_on_incident_cost,message=FALSE, warning=FALSE}
+```{r, stats_on_incident_cost,message=FALSE, warning=FALSE, echo=FALSE}
 
 animal_rescue %>% 
   
@@ -349,7 +357,7 @@ The median is typically lower than the mean for most of the animal groups. This 
 
 Finally, let us plot a few plots that show the distribution of incident_cost for each animal group.
 
-```{r, plots_on_incident_cost_by_animal_group,message=FALSE, warning=FALSE}
+```{r, plots_on_incident_cost_by_animal_group,message=FALSE, warning=FALSE, echo=FALSE}
 
 # base_plot
 base_plot <- animal_rescue %>% 
