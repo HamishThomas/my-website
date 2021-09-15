@@ -37,12 +37,15 @@ My previous professional experiences vary from the engineering sector, where I w
 * Guitar 
 * Football (which I like to coach, play and watch - primarily as an over-optimistic supporter of Tottenham Hotspur). 
 
-```{r, echo=FALSE}
-img1 <- readPNG("IMG_1553.png", info = TRUE)
-grid.raster(img1, hjust = 0.47 , height = 1.02)
+```{r picture, echo=FALSE}
+#img1 <- readPNG("IMG_1553.png", info = TRUE)
+#grid.raster(img1, hjust = 0.47 , height = 1.02)
+```
+
+```{r picture1, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/img/IMG_1533.png", error = FALSE)
 ```
 *Above:* A photo I took from the North Stand at the **Tottenham** **Hotspur** **Stadium** in 2019 after a 1-0 win against Brighton, in which **Christian** **Eriksen** scored the only goal.]
-
 
 
 
