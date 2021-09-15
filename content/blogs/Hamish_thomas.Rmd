@@ -46,7 +46,7 @@ My previous professional experiences vary from the engineering sector, where I w
 knitr::include_graphics("/img/IMG_1533.png", error = FALSE)
 ```
 
-*Above:* A photo I took from the North Stand at the **Tottenham** **Hotspur** **Stadium** in 2019 after a 1-0 win against Brighton, in which **Christian** **Eriksen** scored the only goal.]
+*Above:* A photo I took from the North Stand at the **Tottenham** **Hotspur** **Stadium** in 2019 after a 1-0 win against Brighton, in which **Christian** **Eriksen** scored the only goal.
 
 
 
