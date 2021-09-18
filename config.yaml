@@ -9,7 +9,8 @@ params:
     buttonText: View Portfolio
     subtitle: |-
       An interactive website that gives information about me, 
-      my previous experiences and projects that I have completed. 
+      my previous experiences and projects that I have completed.
+      Explore my portfolio using the tiles below: 
     title: My Portfolio Website
   blog: {}
   contact:
