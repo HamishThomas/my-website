@@ -90,7 +90,7 @@ params:
   tiles:
     enable: yes
     showcase:
-      - image: Weald.jpeg
+      - image: ME.jpg
         subtitle: A Short Autobiography
         title: About Me
         url: blogs/hamish
