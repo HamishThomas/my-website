@@ -98,11 +98,11 @@ params:
         subtitle: Including Curriculum Vitae
         title: Profile
         url: blogs/tempus
-      - image: pic03.jpg
+      - image: Naples.jpg
         subtitle: Previously Completed Projects
         title: My Work
         url: blogs/magna
-      - image: pic04.jpg
+      - image: SO2.jpg
         subtitle: Worked Examples
         title: AM01 Applied Statistics
         url: blogs/ipsum
