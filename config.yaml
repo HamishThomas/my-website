@@ -106,9 +106,9 @@ params:
         subtitle: Worked Examples
         title: AM01 - Applied Statistics
         url: blogs/ipsum
-      - image: pic05.jpg
-        subtitle: Ipsum Dolor Sit Amet
-        title: Consequat
+      - image: SG2.jpg
+        subtitle: Cleaning and Analysing "Ask a Manager 2021" Survey Data
+        title: Final Project - Group 2 
         url: blogs/ipsum
       - image: pic06.jpg
         subtitle: Feugiat Amet Tempus
