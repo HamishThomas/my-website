@@ -76,11 +76,11 @@ params:
         url: blogs/tempus
       - name: My Work
         url: blogs/magna
-      - name: AM01 - Applied Statistics
+      - name: Group 2 - Final Project
         url: blogs/ipsum
-      - name: Final Project - Group 2
+      - name: The General Social Survey
         url: blogs/ipsum
-      - name: Acknowledgements
+      - name: CDC COVID-19 Case Data
         url: blogs/ipsum
       - name: Elements
         url: elements.html
@@ -103,16 +103,16 @@ params:
         title: My Work
         url: blogs/magna
       - image: SO2.jpg
-        subtitle: Worked Examples
-        title: AM01 - Applied Statistics
+        subtitle: AM01 - Final Project
+        title: Group 2 - Ask a Manager Survey
         url: blogs/ipsum
-      - image: SG2.jpg
-        subtitle: Cleaning and Analysing "Ask a Manager 2021" Survey Data
-        title: Final Project - Group 2 
+      - image: Twitter.jpg
+        subtitle: AM01 - Worked Example 1
+        title: The General Social Survey
         url: blogs/ipsum
-      - image: applause.jpg
-        subtitle: A Few Thank You's!
-        title: Acknowledgements
+      - image: swab.jpg
+        subtitle: AM01 - Worked Example 2
+        title: CDC COVID-19 Case Surveillance
         url: blogs/ipsum
   two:
     buttonText: Explore
