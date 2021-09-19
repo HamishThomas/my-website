@@ -72,15 +72,15 @@ params:
         url: '#'
       - name: About Me
         url: blogs/hamish
-      - name: Tempus
+      - name: Profile
         url: blogs/tempus
-      - name: Magna
+      - name: My Work
         url: blogs/magna
-      - name: Ipsum
+      - name: AM01 - Applied Statistics
         url: blogs/ipsum
-      - name: Consequat
+      - name: Final Project - Group 2
         url: blogs/ipsum
-      - name: Etiam
+      - name: Acknowledgements
         url: blogs/ipsum
       - name: Elements
         url: elements.html
@@ -110,9 +110,9 @@ params:
         subtitle: Cleaning and Analysing "Ask a Manager 2021" Survey Data
         title: Final Project - Group 2 
         url: blogs/ipsum
-      - image: pic06.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Etiam
+      - image: applause.jpg
+        subtitle: A Few Thank You's!
+        title: Acknowledgements
         url: blogs/ipsum
   two:
     buttonText: Explore
