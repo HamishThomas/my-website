@@ -10,3 +10,132 @@ slug: cdc
 title: CDC Covid Case Surveillance
 ---
 
+The [CDC Covid-19 Case Surveillance Data](https://data.cdc.gov/Case-Surveillance/COVID-19-Case-Surveillance-Public-Use-Data/vbim-akqf) is a case surveillance public use dataset with 12 elements for all COVID-19 cases shared with CDC and includes demographics, any exposure history, disease severity indicators and outcomes, presence of any underlying medical conditions and risk behaviors. You can see the variables from 
+
+
+```{r covid_data, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("images", "cdc_data.png"), error = FALSE)
+```
+
+
+There are well over 28 million entries of individual, and we will work with SQLlite database, rather than a CSV file. In this section, we will produce two graphs that show death % rate:
+
+1. by age group, sex, and whether the patient had co-morbidities or not
+2. by age group, sex, and whether the patient was admited to Intensive Care Unit (ICU) or not.
+
+
+```{r covid_challenge, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("images", "covid_death_rate_comorbidities.png"), error = FALSE)
+knitr::include_graphics(here::here("images", "covid_death_rate_icu.png"), error = FALSE)
+```
+
+
+>>>>>>> 63aa321edb97a56e63101c741866eee42326dd25
+Set up a connection to sqlite database. 
+Make sure the database file is in your working directory-- 
+Put it at the root of am01
+
+
+```{r}
+cdc_db <- DBI::dbConnect(
+  drv = RSQLite::SQLite(),
+  dbname = "cdc_data.db"
+)
+```
+
+```{r}
+# browse the tables in the database using DBI::dbListTables()
+DBI::dbListTables(cdc_db)
+```
+
+```{r}
+# We can easily set these tables up as database objects using dplyr
+cdc_data <- dplyr::tbl(cdc_db, "cdc")
+cdc_data
+```
+
+
+```{r}
+query1 <- cdc_data %>%
+  select(sex, age_group, medcond_yn,death_yn) %>% 
+  filter(death_yn == "Yes" | death_yn == "No") %>% 
+  filter(medcond_yn == "Yes" | medcond_yn == "No") %>% 
+  filter(sex == "Male" | sex == "Female") %>% 
+  filter(age_group != "Missing")
+
+# what kind of a thing is query1?
+class(query1)
+
+```
+
+```{r}
+plot1 <- query1 %>% 
+collect()
+```
+
+```{r}
+new_plot1 <- plot1 %>% 
+  group_by(age_group, sex, medcond_yn) %>% 
+  count(death_yn) %>% 
+  mutate(rate = n/sum(n))
+
+new_plot1$medcond_yn = factor(new_plot1$medcond_yn, levels=c('Yes','No'))
+```
+
+```{r,fig.width=10,fig.height=7}
+
+new_plot1 %>% 
+  filter(death_yn == "Yes") %>% 
+  ggplot(aes(x = rate,y = age_group))+
+  geom_bar(stat ="identity",fill = "steelblue3") +
+  facet_grid(vars(medcond_yn), vars(sex))+
+  theme_bw()+
+  labs(title = "Covid death % by age group, sex and presence of co-morbidities", x = "",y = "", caption = "Source: CDC")+
+  scale_x_continuous(labels = scales::percent)+
+  geom_text(aes(label =round(rate*100,1)), position = "dodge")
+  
+```
+
+
+```{r}
+query2 <- cdc_data %>%
+  select(sex, age_group, icu_yn,death_yn) %>% 
+  filter(death_yn == "Yes" | death_yn == "No") %>% 
+  filter(icu_yn == "Yes" | icu_yn == "No") %>% 
+  filter(sex == "Male" | sex == "Female") %>% 
+  filter(age_group != "Missing")
+  
+# what kind of a thing is query2?
+
+class(query2)
+
+```
+
+```{r}
+
+plot2 <- query2 %>% 
+collect()
+```
+
+```{r}
+new_plot2 <- plot2 %>% 
+  group_by(age_group, sex, icu_yn) %>% 
+  count(death_yn) %>% 
+  mutate(rate = n/sum(n))
+
+new_plot2$icu_yn = factor(new_plot2$icu_yn, levels=c('Yes','No'))
+```
+
+```{r,fig.width=10,fig.height=7}
+
+new_plot2 %>% 
+  filter(death_yn == "Yes") %>% 
+  ggplot(aes(x = rate,y = age_group))+
+  geom_bar(stat ="identity",fill = "coral") +
+  facet_grid(vars(icu_yn), vars(sex))+
+  theme_bw()+
+  labs(title = "Covid death % by age group, sex and ICU Admmission", x = "",y = "", caption = "Source: CDC")+
+  scale_x_continuous(labels = scales::percent)+
+  geom_text(aes(label =round(rate*100,1)), position = "dodge")
+  
+
