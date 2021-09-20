@@ -75,7 +75,7 @@ params:
         url: blogs/hamish
       - name: Profile
         url: blogs/tempus
-      - name: My Work
+      - name: Gapminder & Brexit Vote Analysis
         url: blogs/magna
       - name: Group 2 - Final Project
         url: blogs/ipsum
@@ -83,8 +83,8 @@ params:
         url: blogs/ipsum
       - name: CDC COVID-19 Case Data
         url: blogs/ipsum
-      - name: Elements
-        url: elements.html
+#      - name: Elements
+#        url: elements.html
     menu: Menu
     subtitle: Thomas
     title: Hamish
@@ -99,9 +99,9 @@ params:
         subtitle: Including Curriculum Vitae
         title: Profile
         url: blogs/tempus
-      - image: Naples.jpg
-        subtitle: Previously Completed Projects
-        title: My Work
+      - image: earth.jpg
+        subtitle: AM01 - Pre-Programme Assignment
+        title: Gapminder & Brexit Vote Analysis
         url: blogs/magna
       - image: SO2.jpg
         subtitle: AM01 - Final Project
