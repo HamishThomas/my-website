@@ -100,11 +100,25 @@ knitr::include_graphics("/img/01337679-Research Paper-HT.pdf", error=FALSE)
 ## Skills and Additional Information
 ***
 
+### Main Personal Skills: 
+* Problem Solving and Analytical Analysis
+* Leadership and Teamwork
+* Presentation and Discussion
+* Creative Thinking and Adaptability
+
+### Other Skills and Information:
+* Advanced Knowledge of MATLAB, Python, Adobe Illustrator, Microsoft Excel, and R (almost!).
+* Qualified F.A. Football Coach with experience in multiple schools and clubs. 
+* 2x winner of the School Sports Prize.
+* Languages: English (Native), German (Conversational), French (Basic)
+
+
 
 ***
 ## Curriculum Vitae
 ***
-```{r picture5, echo=FALSE, out.width = "100%", include=TRUE}
-knitr::include_graphics("./img/HamishThomas_CV_9/21_copy", error=FALSE)
+
+```{r picture5, echo=FALSE, out.width = "100%", include=TRUE, out.height = 1000}
+knitr::include_graphics("/img/HT_CV.pdf", error=FALSE)
 ```
 
