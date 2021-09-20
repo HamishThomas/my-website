@@ -76,7 +76,9 @@ knitr::include_graphics("/img/IAV.jpg", error = FALSE)
 ### July 2021 - Imperial College London - Final Dissertation
 **Simulating** **the** **Effect** **of** **Droplet** **Size** **on** **COVID-19** **Particle** **Dispersion**.
 
-
+```{r label, echo=FALSE, out.width = "100%", include=TRUE, out.height = 800}
+knitr::include_graphics("/img/CID01337679-ResearchPaper-MvR.pdf", error=FALSE)
+```
 
 
 ***
