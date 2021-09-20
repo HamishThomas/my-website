@@ -14,8 +14,10 @@ title: Gapminder & Brexit Data Analysis
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
+<hr />
 <div id="task-1-gapminder-country-comparison" class="section level1">
 <h1>Task 1: <code>gapminder</code> country comparison</h1>
+<hr />
 <p>The <code>gapminder</code> dataset is imported, and this has data on life expectancy, population, and GDP per capita for 142 countries from 1952 to 2007. Below is a ‘glimpse’ of the data frame, as well as the first 20 lines within the ‘table’.</p>
 <pre class="r"><code>glimpse(gapminder)</code></pre>
 <pre><code>## Rows: 1,704
@@ -101,10 +103,12 @@ plot1</code></pre>
 <p>The continents that have seen the sharpest rises in life expectancy since 1952 are those which contain emerging economies. Countries that have exhibited substantial economic growth in this period, such as Brazil, China, India, Indonesia, Malaysia and Mexico, are typically located in Asia or the Americas. This is likely why these continents seem to have exhibited the highest growth, as the economic development within their countries has led to improved healthcare, technology, diet and living standards.</p>
 <p>Growth in Africa followed an upward trend between 1950 - 1990 that exhibited a similar gradient to other fast-growing continents. But this increase levelled off shortly after, which is likely due to limited economic power (which is enhanced by major corruption in many of these countries), as well as poor healthcare and many conflicts/wars on this continent causing many young deaths.</p>
 <p>As expected, continents whose economic growth primarily accelerated before the 1950s - namely Europe and Oceania - exhibit a smaller increase in life expectancy during the above time-frame.</p>
+<hr />
 </div>
 </div>
-<div id="task-3-brexit-vote-analysis" class="section level1">
-<h1>Task 3: Brexit vote analysis</h1>
+<div id="task-2-brexit-vote-analysis" class="section level1">
+<h1>Task 2: Brexit vote analysis</h1>
+<hr />
 <p>We will have a look at the results of the 2016 Brexit vote in the UK. First we read the data using <code>read_csv()</code> and have a quick glimpse at the data (shown below).</p>
 <pre class="r"><code>brexit_results &lt;- read_csv(&quot;../../data/brexit_results.csv&quot;)
 glimpse(brexit_results)</code></pre>
