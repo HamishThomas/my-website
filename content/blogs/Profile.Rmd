@@ -1,0 +1,46 @@
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T22:26:13-05:00"
+description: An overview of my profile - including my education, professional experience, volunteer work, co-curricular activities and more. Attached within this section is my curriculum vitae. 
+draft: false
+image: footy.jpg
+keywords: ""
+slug: tempus
+title: Profile
+---
+
+## Education
+***
+### 2021 - present.
+**London** **Businesss** **School**  
+Reading for a Masters in Analytics and Management  
+Member of the Consulting Club, Technology & Media Club and Sports Business Club.
+
+### 2017 - 2021
+**Imperial** **College** **London**  
+MEng Civil Engineering - First Class Honours  
+Winner of the 2019 Design Prize and 2021 Fluid Mechanics Dissertation Award.  
+Member of German Horizons, the Civil Engineering Society and Vice-Captain of the Royal School of Mines Football Club.
+
+### 2010 - 2017
+**Sevenoaks** **School**  
+43 points in IB Diploma and 11 A* iGCSEs  
+Captain of the First XI Football Team.
+
+
+## Experience
+***
+
+blah
+
+## Projects
+***
+
+blah
+
+
+## Volunteer Work
+
+

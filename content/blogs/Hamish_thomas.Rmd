@@ -21,7 +21,7 @@ library(png)
 
 
 ## By Hamish Thomas
-
+***
 My name is *Hamish* *Thomas* and I was born on the 11th November 1998 in south-west London. When I was just 5 years old, I moved to America for family reasons, and as a result I spent a large percentage of my childhood living in **Los** **Angeles**, **California**. I attended primary school in LA and am still in contact with some close friends I made during my time there. In 2008 I returned to the UK, moving to Kent, where I went to secondary school and completed my **GCSE** and **IB** qualifications. This led me to an undergraduate **engineering** **degree** at [Imperial College London](https://www.imperial.ac.uk/), in which I achieved a First-Class Honours and an award for my dissertation on COVID-19 particle dispersion. During my final year at Imperial, I decided that I wanted to transfer my engineering skills to the world of business, and also develop the analytical capabilities I obtained from my undergraduate degree. For this reason, the **Masters** **in** **Analytics** **and** **Management** at [London Business School](https://www.london.edu/) seemed like the perfect fit, and I was luckily accepted onto this course, from which I will graduate in summer 2022. 
 
 My previous professional experiences are varied. Most notably, I have undertaken work in the engineering sector, where I worked with London's Crossrail project (at Network Rail) as well as at a large automotive consultancy in Berlin (called IAV GmbH). I have also worked in teaching, digital advertising, football coaching and even in the National Health Service (NHS). I view my breadth of experience (at both an educational and professional level) as one of my strongest assets. 

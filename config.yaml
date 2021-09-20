@@ -101,7 +101,7 @@ params:
         url: blogs/tempus
       - image: earth.jpg
         subtitle: AM01 - Pre-Programme Assignment
-        title: Gapminder & Brexit Vote Analysis
+        title: Gapminder Data Analysis
         url: blogs/magna
       - image: SO2.jpg
         subtitle: AM01 - Final Project
