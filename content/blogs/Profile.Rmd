@@ -8,7 +8,7 @@ draft: false
 image: footy.jpg
 keywords: ""
 slug: tempus
-title: Profile
+title: Profile and Curriculum Vitae
 ---
 ***
 ## Education
@@ -27,7 +27,9 @@ Member of German Horizons, the Civil Engineering Society and Vice-Captain of the
 ### 2010 - 2017
 **Sevenoaks** **School**  
 43 points in IB Diploma and 11 A* iGCSEs  
-Captain of the First XI Football Team.
+Captain of the First XI Football Team.  
+  
+ 
 
 ***
 ## Experience
@@ -66,7 +68,8 @@ knitr::include_graphics("/img/IAV.jpg", error = FALSE)
 ```
 
 *Above* *[left]*: The Naples underground canpoy roof that my team built during the Constructionarium project.  
-*Above* *[right]*: The location of the IAV GmbH test site in Berlin, Germany. 
+*Above* *[right]*: The location of the IAV GmbH test site in Berlin, Germany.  
+
 
 
 ***
@@ -74,10 +77,10 @@ knitr::include_graphics("/img/IAV.jpg", error = FALSE)
 ***
 
 ### July 2021 - Imperial College London - Final Dissertation
-**Simulating** **the** **Effect** **of** **Droplet** **Size** **on** **COVID-19** **Particle** **Dispersion**.
+**Simulating** **the** **Effect** **of** **Droplet** **Size** **on** **COVID-19** **Particle** **Dispersion** - Supervised by Dr Maarten Van Reeuwijk.
 
-```{r label, echo=FALSE, out.width = "100%", include=TRUE, out.height = 800}
-knitr::include_graphics("/img/CID01337679-ResearchPaper-MvR.pdf", error=FALSE)
+```{r label, echo=FALSE, out.width = "100%", include=TRUE, out.height = 600}
+knitr::include_graphics("/img/01337679-Research Paper-HT.pdf", error=FALSE)
 ```
 
 
@@ -85,6 +88,12 @@ knitr::include_graphics("/img/CID01337679-ResearchPaper-MvR.pdf", error=FALSE)
 ## Volunteer Work
 ***
 
+**Summer** **2021** - **present**: The Liberal Democrat Party   
+**2015** - **2016**: Weald Community Primary School - Football Coach  
+**2015** - **2016**: Sevenoaks School - Science Teacher  
+**2014** - **2015**: Weald Wolves Football Club - Coach  
+**2014** - **2015**: Solefield School - Sports Coach  
+**2013** - **2014**: Lady Boswell's Primary School - Teaching Assistant
 
 
 ***
@@ -92,8 +101,10 @@ knitr::include_graphics("/img/CID01337679-ResearchPaper-MvR.pdf", error=FALSE)
 ***
 
 
-
 ***
 ## Curriculum Vitae
 ***
+```{r picture5, echo=FALSE, out.width = "100%", include=TRUE}
+knitr::include_graphics("./img/HamishThomas_CV_9/21_copy", error=FALSE)
+```
 
