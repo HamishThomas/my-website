@@ -34,7 +34,7 @@ When I am not working, I have many other personal interests/hobbies. Some of the
 * **Politics** - which I engage with actively as a volunteer for a UK political party.
 * **Football** - which I like to coach, play and watch (primarily as an over-optimistic supporter of Tottenham Hotspur). 
 
-```{r picture1, echo=FALSE, out.width="100%"}
+```{r picture1, echo=FALSE, out.width="100%", out.extra='style="background-color:white;padding:5px"'}
 knitr::include_graphics("/img/Spurnebau.jpg", error = FALSE)
 ```
 *Above:* A photo I took overlooking the 'South Stand' at the **Tottenham** **Hotspur** **Stadium** in 2019 after a 1-0 win against Brighton, in which my favourite ever Spurs player, **Christian** **Eriksen**, scored the only goal.
