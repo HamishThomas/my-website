@@ -21,7 +21,9 @@ library(grid)
 library(png)
 ```
 
+***
 # Task 1: `gapminder` country comparison
+***
 
 The `gapminder` dataset is imported, and this has data on life expectancy, population, and GDP per capita for 142 countries from 1952 to 2007. Below is a 'glimpse' of the data frame, as well as the first 20 lines within the 'table'. 
 
@@ -104,8 +106,9 @@ As expected, continents whose economic growth primarily accelerated before the 1
 
 
 
-
-# Task 3: Brexit vote analysis
+***
+# Task 2: Brexit vote analysis
+***
 
 We will have a look at the results of the 2016 Brexit vote in the UK. First we read the data using `read_csv()` and have a quick glimpse at the data (shown below).
 
