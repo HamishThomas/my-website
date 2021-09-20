@@ -56,6 +56,8 @@ plot1 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
    NULL 
 plot1
 ```
+  
+    
 As we can see, the life expectancy in the UK has been gradually increasing since the 1950s, following what seems to be (close to) a linear progression. 
 
 
@@ -72,6 +74,8 @@ ggplot(continent_data, mapping = aes(x = year  , y = lifeExp , colour = country 
        y = "Average Life Expectancy") +
   NULL
 ```
+  
+    
 Although this graph is hard to interperet, due to the large quantity of data, we can notably see that all European countries have seen an increase in life expectancy. The most notable outlier, Turkey, started with a particularly low life expactancy (less than 45) in 1950, but has now caught up with the rest of the pack. 
 
 
