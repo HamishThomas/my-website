@@ -184,3 +184,36 @@ ggplot(brexit_results, aes(x = born_in_uk, y = leave_share)) +
 ```
 
 This relationship clearly shows that constituencies with a larger percentage of native British people are more likely to have a larger leave share. This is expected as those born in the UK are expected to feel more nationalistic when it comes to the key issues of Brexit - namely, immigration, pressure on the NHS and other public services, etc. 
+
+This task was extrapolated further in AM01 - Applied Statistics Homework 3, where for every constituency, we plotted leave share (%) against the percentage (%) of votes for the UK's main political parties in the 2015 general election. This allows us to examine the potentiaal correlation between voting for a particular political party and voting for Brexit. 
+
+This involved using the 'select' and 'pivot_longer' function to group data by the main political parties (Labour, Conservatives, UKIP and Liberal Democrat). By pivoting the table, we can easily plot the leave percentage against the party vote percentage for each party *within* *each* *constituency*. We fit a line of best fit to the data for each political party using geom_smooth - which allows for useful comparison and prediction. 
+
+```{r,challenge1_plot}
+temp_brexit <- brexit_results %>% 
+  select(con_2015, lab_2015, ld_2015, ukip_2015, leave_share) %>% 
+  pivot_longer(cols = 1:4, names_to = "party", values_to = "party_percentage")
+
+cols <- c("con_2015" = "#0087dc", "lab_2015" = "#d50000", "ld_2015" = "#FDBB30", "ukip_2015" = "#EFE600")
+
+temp_brexit %>% 
+  ggplot(aes(x=party_percentage,y=leave_share, group=party, color=party)) +
+  geom_point(size = 0.5, alpha = 0.2)+
+  geom_smooth(method=lm, size = 0.5)+
+  labs(title = "How political affiliation translated to Brexit Voting", x = "Party % in the UK 2015 general election", y = "Leave % in the 2016 Brexit referendum")+
+  scale_colour_manual(labels = c("Conservative", "Labour","Lib Dems","UKIP"), values = cols)+
+  theme_bw()+
+  theme(legend.position = "bottom",plot.title = element_text(face = "bold", size = 13))+
+  theme(legend.title = element_blank())+
+  NULL
+
+```
+  
+The graph here can be used to determine whether there is a correlation between voting for a particular political party and voting for Brexit. As we can see there is a strong positive correlation between UKIP voting and leave voting - this is expected as the values of UKIP are closely aligned with those of Brexit. Although weaker, there is a negative correlation between voting for the liberal democrats and voting for leave - indicating that Liberal Democrat voters are more likely to be pro-European. 
+
+Finally, we can see that the correlations for the main two political parties were fairly weak at the time of voting. There is a very slight positive correlation associated with voting Brexit and voting Conservative, along with a very weak negative correlation associated with voting Brexit and voting Labour. The explanation of this could probably fill its own blog, but ultimately, it shows that Dominic Cummings and the 'Vote Leave' team were successful in getting the issues associated with Brexit to transcend traditional political ideology. By making issues such as the NHS, fishing rights and migrant's (realistically minimal) impact on wages and public services central to the campaign, Vote Leave was able to convince both traditionally eurosceptic Conservative voters **and** poor, marginalised Labour voters that leaving the EU would be beneficial. 
+
+
+
+
+
