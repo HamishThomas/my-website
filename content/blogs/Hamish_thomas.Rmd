@@ -40,5 +40,14 @@ knitr::include_graphics("/img/Spurnebau.jpg", error = FALSE)
 *Above:* A photo I took overlooking the 'South Stand' at the **Tottenham** **Hotspur** **Stadium** in 2019 after a 1-0 win against Brighton, in which my favourite ever Spurs player, **Christian** **Eriksen**, scored the only goal.
 
 
+***
+# My life in photographs
+***
+
+```{r picture2_3, echo=FALSE, out.width="50%", out.extra='style="background-color:white;padding:10px"'}
+knitr::include_graphics("/img/Spurnebau.jpg", error = FALSE)
+knitr::include_graphics("/img/pic200.jpg", error = FALSE)
+```
+
 
 
