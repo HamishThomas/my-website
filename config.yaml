@@ -81,7 +81,7 @@ params:
       - name: Group 2 - Final Project
         url: blogs/ipsum
       - name: The General Social Survey
-        url: blogs/ipsum
+        url: blogs/gss
       - name: CDC COVID-19 Case Data
         url: blogs/ipsum
 #      - name: Elements
@@ -111,7 +111,7 @@ params:
       - image: Twitter.jpg
         subtitle: AM01 - Worked Example 1
         title: The General Social Survey
-        url: blogs/ipsum
+        url: blogs/gss
       - image: swab.jpg
         subtitle: AM01 - Worked Example 2
         title: CDC COVID-19 Case Surveillance
