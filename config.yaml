@@ -76,7 +76,7 @@ params:
         url: blogs/hamish
       - name: Profile
         url: blogs/tempus
-      - name: Gapminder & Brexit Vote Analysis
+      - name: Gapminder & Brexit Analysis
         url: blogs/magna
       - name: Group 2 - Final Project
         url: blogs/ipsum
@@ -102,7 +102,7 @@ params:
         url: blogs/tempus
       - image: earth.jpg
         subtitle: AM01 - Pre-Programme Assignment
-        title: Gapminder Data Analysis
+        title: Gapminder & Brexit Data Analysis
         url: blogs/magna
       - image: SO2.jpg
         subtitle: AM01 - Final Project
