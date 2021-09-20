@@ -14,3 +14,165 @@ title: Gapminder & Brexit Data Analysis
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
+<div id="task-1-gapminder-country-comparison" class="section level1">
+<h1>Task 1: <code>gapminder</code> country comparison</h1>
+<p>The <code>gapminder</code> dataset is imported, and this has data on life expectancy, population, and GDP per capita for 142 countries from 1952 to 2007. Below is a ‘glimpse’ of the data frame, as well as the first 20 lines within the ‘table’.</p>
+<pre class="r"><code>glimpse(gapminder)</code></pre>
+<pre><code>## Rows: 1,704
+## Columns: 6
+## $ country   &lt;fct&gt; &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, …
+## $ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, …
+## $ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …
+## $ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.8…
+## $ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…
+## $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134, …</code></pre>
+<pre class="r"><code>head(gapminder, 20) # look at the first 20 rows of the dataframe</code></pre>
+<pre><code>## # A tibble: 20 × 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+##  1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2 Afghanistan Asia       1957    30.3  9240934      821.
+##  3 Afghanistan Asia       1962    32.0 10267083      853.
+##  4 Afghanistan Asia       1967    34.0 11537966      836.
+##  5 Afghanistan Asia       1972    36.1 13079460      740.
+##  6 Afghanistan Asia       1977    38.4 14880372      786.
+##  7 Afghanistan Asia       1982    39.9 12881816      978.
+##  8 Afghanistan Asia       1987    40.8 13867957      852.
+##  9 Afghanistan Asia       1992    41.7 16317921      649.
+## 10 Afghanistan Asia       1997    41.8 22227415      635.
+## 11 Afghanistan Asia       2002    42.1 25268405      727.
+## 12 Afghanistan Asia       2007    43.8 31889923      975.
+## 13 Albania     Europe     1952    55.2  1282697     1601.
+## 14 Albania     Europe     1957    59.3  1476505     1942.
+## 15 Albania     Europe     1962    64.8  1728137     2313.
+## 16 Albania     Europe     1967    66.2  1984060     2760.
+## 17 Albania     Europe     1972    67.7  2263554     3313.
+## 18 Albania     Europe     1977    68.9  2509048     3533.
+## 19 Albania     Europe     1982    70.4  2780097     3631.
+## 20 Albania     Europe     1987    72    3075321     3739.</code></pre>
+<p>This data can be used to produce two graphs of how life expectancy has changed over the years for the <code>country</code> and the <code>continent</code> I come from - in this case the <em>United</em> <em>Kingdom</em> and <em>Europe</em>. We will now produce three graphs which show how the life expectancy (for different regions) evolves over time, starting by filtering the data for these specific regions.</p>
+<pre class="r"><code>country_data &lt;- gapminder %&gt;% 
+            filter(country == &quot;United Kingdom&quot;) 
+continent_data &lt;- gapminder %&gt;% 
+            filter(continent == &quot;Europe&quot;)</code></pre>
+<div id="life-expectancy-in-the-united-kingdom-over-time." class="section level2">
+<h2>Life Expectancy in the United Kingdom over time.</h2>
+<p>First, we plot of life expectancy over time for a single country of choice - the <em>United Kingdom</em>. This is done by mapping <code>year</code> on the x-axis, and <code>lifeExp</code> on the y-axis. We use ‘geom_smooth’ to incorporate a line of best fit, as well as ‘labs’ to label the graph.</p>
+<pre class="r"><code>plot1 &lt;- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
+   geom_point() +
+   geom_smooth(se = FALSE)+
+   labs(title = &quot;Average UK Life Expectancy over time.&quot;,
+       x = &quot;Year&quot;,
+       y = &quot;Average Life Expectancy&quot;) +
+   NULL 
+plot1</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/blogs/Gapminder_files/figure-html/lifeExp_one_country-1.png" width="672" />
+As we can see, the life expectancy in the UK has been gradually increasing since the 1950s, following what seems to be (close to) a linear progression.</p>
+</div>
+<div id="life-expectancy-in-europe-over-time." class="section level2">
+<h2>Life Expectancy in Europe over time.</h2>
+<p>Secondly, we produce a plot for all countries in <em>Europe</em>. This is done by mapping the <code>country</code> variable to the colour aesthetic. We also map <code>country</code> to the <code>group</code> aesthetic, so that all points for each country are grouped together.</p>
+<pre class="r"><code>ggplot(continent_data, mapping = aes(x = year  , y = lifeExp , colour = country , group = country))+
+  geom_line() + 
+  geom_smooth(se = FALSE) +
+  labs(title = &quot;Average Life Expectancy over time for European Countries.&quot;,
+       x = &quot;Year&quot;,
+       y = &quot;Average Life Expectancy&quot;) +
+  NULL</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/blogs/Gapminder_files/figure-html/lifeExp_one_continent-1.png" width="672" />
+Although this graph is hard to interperet, due to the large quantity of data, we can notably see that all European countries have seen an increase in life expectancy. The most notable outlier, Turkey, started with a particularly low life expactancy (less than 45) in 1950, but has now caught up with the rest of the pack.</p>
+</div>
+<div id="life-expectancy-in-different-continents-over-time." class="section level2">
+<h2>Life Expectancy in different continents over time.</h2>
+<p>Finally, using the original <code>gapminder</code> data, we produce a life expectancy over time graph, grouped (or faceted) by continent - using the ‘facet_wrap’ function. The legend is removed by adding the <code>theme(legend.position="none")</code> in the end of our ggplot.</p>
+<pre class="r"><code>ggplot(data = gapminder , mapping = aes(x = year , y = lifeExp  , colour = continent ))+
+  geom_point() + 
+  geom_smooth(se = FALSE) +
+  facet_wrap(~continent) +
+  theme(legend.position=&quot;none&quot;) + #remove all legends
+  labs(title = &quot;Average Life Expectancy over time for different Continents.&quot;,
+       x = &quot;Year&quot;,
+       y = &quot;Average Life Expectancy&quot;) +
+  NULL</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/blogs/Gapminder_files/figure-html/lifeExp_facet_by_continent-1.png" width="672" /></p>
+<p>The continents that have seen the sharpest rises in life expectancy since 1952 are those which contain emerging economies. Countries that have exhibited substantial economic growth in this period, such as Brazil, China, India, Indonesia, Malaysia and Mexico, are typically located in Asia or the Americas. This is likely why these continents seem to have exhibited the highest growth, as the economic development within their countries has led to improved healthcare, technology, diet and living standards.</p>
+<p>Growth in Africa followed an upward trend between 1950 - 1990 that exhibited a similar gradient to other fast-growing continents. But this increase levelled off shortly after, which is likely due to limited economic power (which is enhanced by major corruption in many of these countries), as well as poor healthcare and many conflicts/wars on this continent causing many young deaths.</p>
+<p>As expected, continents whose economic growth primarily accelerated before the 1950s - namely Europe and Oceania - exhibit a smaller increase in life expectancy during the above time-frame.</p>
+</div>
+</div>
+<div id="task-3-brexit-vote-analysis" class="section level1">
+<h1>Task 3: Brexit vote analysis</h1>
+<p>We will have a look at the results of the 2016 Brexit vote in the UK. First we read the data using <code>read_csv()</code> and have a quick glimpse at the data (shown below).</p>
+<pre class="r"><code>brexit_results &lt;- read_csv(&quot;../../data/brexit_results.csv&quot;)
+glimpse(brexit_results)</code></pre>
+<pre><code>## Rows: 632
+## Columns: 11
+## $ Seat        &lt;chr&gt; &quot;Aldershot&quot;, &quot;Aldridge-Brownhills&quot;, &quot;Altrincham and Sale W…
+## $ con_2015    &lt;dbl&gt; 50.592, 52.050, 52.994, 43.979, 60.788, 22.418, 52.454, 22…
+## $ lab_2015    &lt;dbl&gt; 18.333, 22.369, 26.686, 34.781, 11.197, 41.022, 18.441, 49…
+## $ ld_2015     &lt;dbl&gt; 8.824, 3.367, 8.383, 2.975, 7.192, 14.828, 5.984, 2.423, 1…
+## $ ukip_2015   &lt;dbl&gt; 17.867, 19.624, 8.011, 15.887, 14.438, 21.409, 18.821, 21.…
+## $ leave_share &lt;dbl&gt; 57.89777, 67.79635, 38.58780, 65.29912, 49.70111, 70.47289…
+## $ born_in_uk  &lt;dbl&gt; 83.10464, 96.12207, 90.48566, 97.30437, 93.33793, 96.96214…
+## $ male        &lt;dbl&gt; 49.89896, 48.92951, 48.90621, 49.21657, 48.00189, 49.17185…
+## $ unemployed  &lt;dbl&gt; 3.637000, 4.553607, 3.039963, 4.261173, 2.468100, 4.742731…
+## $ degree      &lt;dbl&gt; 13.870661, 9.974114, 28.600135, 9.336294, 18.775591, 6.085…
+## $ age_18to24  &lt;dbl&gt; 9.406093, 7.325850, 6.437453, 7.747801, 5.734730, 8.209863…</code></pre>
+<p>The data comes from <a href="https://www.thecrosstab.com/">Elliott Morris</a>, who cleaned it and made it available through his <a href="https://www.datacamp.com/courses/analyzing-election-and-polling-data-in-r">DataCamp class on analysing election and polling data in R</a>.</p>
+<p>Our main outcome variable (or y) is <code>leave_share</code>, which is the percent of votes cast in favour of Brexit, or leaving the EU. Each row is a UK <a href="https://en.wikipedia.org/wiki/United_Kingdom_Parliament_constituencies">parliament constituency</a>.</p>
+<p>To get a sense of the spread, or distribution, of the data, we can plot a <em>histogram</em>, a <em>density</em> <em>plot</em>, and the empirical <em>cumulative</em> <em>distribution</em> <em>function</em> of the leave % in all constituencies.</p>
+<pre class="r"><code># histogram
+ggplot(brexit_results, aes(x = leave_share)) +
+  geom_histogram(binwidth = 2.5) +
+  labs(title = &quot;Brexit Leave Share - Histogram&quot;,
+       x = &quot;Leave Share [%]&quot;,
+       y = &quot;Frequency of Constituencies&quot;,
+       subtitle = &quot;Figure 3.1&quot;)</code></pre>
+<p><img src="/blogs/Gapminder_files/figure-html/brexit_histogram-1.png" width="672" /></p>
+<pre class="r"><code># density plot-- think smoothed histogram
+ggplot(brexit_results, aes(x = leave_share)) +
+  geom_density()+
+  labs(title = &quot;Brexit Leave Share - Density Plot&quot;,
+       x = &quot;Leave Share [%]&quot;,
+       y = &quot;Frequency of Constituencies&quot;,
+       subtitle = &quot;Figure 3.2&quot;)</code></pre>
+<p><img src="/blogs/Gapminder_files/figure-html/brexit_histogram-2.png" width="672" /></p>
+<pre class="r"><code># The empirical cumulative distribution function (ECDF) 
+ggplot(brexit_results, aes(x = leave_share)) +
+  stat_ecdf(geom = &quot;step&quot;, pad = FALSE) +
+  scale_y_continuous(labels = scales::percent)+
+  labs(title = &quot;Brexit Leave Share - Cumulative Distribution Function Plot&quot;,
+       x = &quot;Leave Share [%]&quot;,
+       y = &quot;Frequency of Constituencies&quot;,
+       subtitle = &quot;Figure 3.3&quot;)</code></pre>
+<p><img src="/blogs/Gapminder_files/figure-html/brexit_histogram-3.png" width="672" /></p>
+<p>One common explanation for the Brexit outcome was fear of immigration and opposition to the EU’s more open border policy. We can check the relationship (or correlation) between the proportion of native born residents (<code>born_in_uk</code>) in a constituency and its <code>leave_share</code>. To do this, let us get the correlation between the two variables. This can be done using the ‘cor’ function.</p>
+<pre class="r"><code>brexit_results %&gt;% 
+  select(leave_share, born_in_uk) %&gt;% 
+  cor()</code></pre>
+<pre><code>##             leave_share born_in_uk
+## leave_share   1.0000000  0.4934295
+## born_in_uk    0.4934295  1.0000000</code></pre>
+<p>The correlation is almost 0.5, which shows that the two variables are positively correlated - although the correlation could be stronger (up to a potential value of +1).</p>
+<p>We can also create a scatterplot between these two variables using <code>geom_point</code>. We also add the best fit line, using <code>geom_smooth(method = "lm")</code>.</p>
+<pre class="r"><code>ggplot(brexit_results, aes(x = born_in_uk, y = leave_share)) +
+  geom_point(alpha=0.3) +
+  
+  # add a smoothing line, and use method=&quot;lm&quot; to get the best straight-line
+  geom_smooth(method = &quot;lm&quot;) + 
+  
+  # use a white background and frame the plot with a black box
+  theme_bw() +
+  labs(title = &quot;Relationship between the proportion of native born residents and leave share.&quot;,
+       x = &quot;Born in the UK [%]&quot;,
+       y = &quot;Leave Share [%]&quot;,
+       subtitle = &quot;Figure 3.4&quot;)</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/blogs/Gapminder_files/figure-html/brexit_immigration_plot-1.png" width="672" /></p>
+<pre class="r"><code>  NULL</code></pre>
+<pre><code>## NULL</code></pre>
+<p>This relationship clearly shows that constituencies with a larger percentage of native British people are more likely to have a larger leave share. This is expected as those born in the UK are expected to feel more nationalistic when it comes to the key issues of Brexit - namely, immigration, pressure on the NHS and other public services, etc.</p>
+</div>
