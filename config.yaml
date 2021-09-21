@@ -10,8 +10,8 @@ params:
     subtitle: |-
       An interactive website that gives information about me, 
       my previous experiences and projects that I have completed. 
-      It also includes a portfolio of worked examples and projects 
-      that I have completed in theAM01 - Applied Statistics Module. 
+      It also includes a portfolio of worked examples 
+      that I have completed in the AM01 - Applied Statistics Module. 
       Explore my portfolio using the tiles below: 
     title: My Portfolio Website
   blog: {}
