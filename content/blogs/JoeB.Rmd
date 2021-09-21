@@ -4,7 +4,7 @@ categories:
 - ""
 date: "2017-10-31T21:28:43-05:00"
 description: This section involves using the General Social Survey data to analyse information about social media and technology use. Analysis using confidence intervals allows us to asnwer questions like - "Do university graduates use twitter more or less than non-graduates?"
-image:
+image: biden2.jpg
 keywords: ""
 slug: joebiden
 title: Joe Biden's Approval Margins
@@ -27,34 +27,28 @@ library(infer)
 
 
 
-# Biden's Approval Margins
-
-As we saw in class, fivethirtyeight.com has detailed data on [all polls that track the president's approval ](https://projects.fivethirtyeight.com/biden-approval-ratings)
+The website, fivethirtyeight.com has detailed data on [all polls that track the president's approval ](https://projects.fivethirtyeight.com/biden-approval-ratings)
 
 ```{r, cache=TRUE}
 # Import approval polls data directly off fivethirtyeight website
 approval_polllist <- read_csv('https://projects.fivethirtyeight.com/biden-approval-data/approval_polllist.csv') 
 
 glimpse(approval_polllist)
-
 # Use `lubridate` to fix dates, as they are given as characters.
 ```
 
+
+***
 ## Create a plot
+***
 
-What I would like you to do is to calculate the average net approval rate (approve- disapprove) for each week since he got into office. I want you plot the net approval, along with its 95% confidence interval. There are various dates given for each poll, please use `enddate`, i.e., the date the poll ended.
-
-Also, please add an orange line at zero. Your plot should look like this:
-
-```{r trump_margins, echo=FALSE, out.width="100%"}
-knitr::include_graphics(here::here("images", "biden_approval_margin.png"), error = FALSE)
-```
+We are going to use the above data to calculate the average net approval rate (approve- disapprove) for each week since Joe Biden got into office. We will plot the net approval, along with its 95% confidence interval. There are various dates given for each poll, but we will use - `enddate`, i.e., the date the poll ended.
 
 
 ```{r}
-#prepare the dataset
+#We begin by preparing the dataset
 
-#calculate the margin
+#We calculate the net approval at a point in time as a function of the approval and the disapproval
 approval_polllist$enddate <- mdy(approval_polllist$enddate)
 new_approval <- approval_polllist %>% 
   filter(subgroup=="Voters") %>% 
@@ -63,8 +57,11 @@ new_approval <- approval_polllist %>%
 glimpse(new_approval)
 
 ```
+
+
 ```{r}
-#calculate the CI for average approval margin
+
+#We then calculate the 95% CI for average approval margin. This is done using the standard error which is also calculated below. 
 
 margin_ci <- new_approval %>% 
   group_by(week) %>% 
@@ -79,8 +76,10 @@ margin_ci <- new_approval %>%
 glimpse(margin_ci)
 ```
 
+Now we can plot the average approval margin for Joe Biden over the course of his time in office. We do so with the confidence intervals attached. We also plot a line at margin=zero, this allows us to clearly see the points at which Biden moves from a net positive to a net negative approval margin. A line of best flit is plotted in blue 
+
 ```{r}
-#plot the for average approval margin
+#Plot the for average approval margin
 margin_ci %>% 
   ggplot(aes(week)) +
   geom_ribbon(aes(ymin = ci_margin_up, ymax = ci_margin_dw), fill="grey", alpha = 0.5)+
@@ -92,60 +91,21 @@ margin_ci %>%
   
   #add the aesthetics for the graph
   geom_hline(yintercept=0, linetype="solid", color = "orange", size = 1)+
-  labs(title="Estimating Approval Margin (approve-disapprove) for Joe Biden",
+  labs(title="Estimating Approval Margin (Approve-Disapprove) for Joe Biden",
        subtitle = "Weekly average of all polls",
-       x = "Week of the year", 
-       y = "Average Approval Margin (Approve - Disapprove") +
+       x = "Week of the Year", 
+       y = "Average Approval Margin (Approve - Disapprove)") +
   annotate("text", x = 20, y = 20, label = "2021", color = 'black',size = 3)+
   scale_y_continuous(
     labels = scales::number_format(accuracy = 0.1))+
   theme_minimal()+
   NULL
 
-
-
 ```
 
+Here, we can see that Biden was able to maintain a fairly positive approval rating for his 30 weeks in office. However, our confidence intervals suggest that there is a possibility that his net approval rating might have been negative at points during this first 30 weeks. 
 
+Over the course of the last 5 weeks, we can see that Biden's net approval margin has become negative, likely as a result of his response to conflicts in Afghanistan. Notably, the confidence interval for the most recent data point is huge, but this is likely to be the result of insufficient data, as supposed to a genuinely large spread of results. 
 
-## Compare Confidence Intervals
-
-Compare the confidence intervals for `week 3` and `week 25`. Can you explain what's going on? One paragraph would be enough.
-
-```{r}
-#calculate the week4 and week5 confidence intervals
-margin_ci_comparison <- new_approval %>% 
-  filter(week==3 | week==25) %>% 
-  group_by(week) %>% 
-  summarise(avg_approval_margin = mean(net_approve),
-            sd_margin = sd(net_approve, na.rm=TRUE),
-            count_margin = n(),
-            se_margin = sd_margin / sqrt(count_margin),
-            ci_margin_up = avg_approval_margin + qt(.975, count_margin-1)*se_margin ,
-            ci_margin_dw = avg_approval_margin - qt(.975, count_margin-1)*se_margin
-            )
-
-#plot the confidence intervals
-margin_ci_comparison %>% 
-  ggplot(aes(x=avg_approval_margin, y=week, color=week))+
-  geom_errorbarh(aes(xmin=ci_margin_dw,xmax=ci_margin_up))+
-  geom_point(aes(x=avg_approval_margin, y=week), size=6)+
-  labs(title="Comparison of confidence intervals for week4 and week 25",
-       x = "Average approval margin", 
-       y = "Week")
-  
-
-#We can see that the average approval margin for week4 is larger than that in week25. However, the confidence interval in week4 [6.12, 19.4] and week25 [6.36, 11.5] overlap. Therefore, based on the confidence interval graphs generated below, we cannot tell if on average, Biden has significantly lower approval margin in week25 than that in week4.
-```
-
-
-```{r}
-comparison_approval <- new_approval %>% 
-  filter(week==3 | week==25)
-
-t.test(net_approve ~ week, data = comparison_approval)
-#Based on the result below, we cannot reject the null hypothesis. 
-
-```
 
 
