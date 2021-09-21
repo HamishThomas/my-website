@@ -1135,7 +1135,7 @@ t.test(tot_earnings_USD ~ race,
 ```
 From the above analysis, it can be seen that the largest pay gap exists between White and Asian. To visualise the difference, a confidence interval plot is created.
 
-```{r, hypothesis_testing,,warning=FALSE,message=FALSE}
+```{r, hypothesis_testing,warning=FALSE,message=FALSE}
 
 # hypothesis testing using infer package
 set.seed(1234)
