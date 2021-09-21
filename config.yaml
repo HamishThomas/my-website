@@ -83,7 +83,7 @@ params:
       - name: The General Social Survey
         url: blogs/gss
       - name: Biden's Approval Margins
-        url: blogs/joeb
+        url: blogs/joebiden
 #      - name: Elements
 #        url: elements.html
     menu: Menu
@@ -115,7 +115,7 @@ params:
       - image: swab.jpg
         subtitle: AM01 - Worked Example 2
         title: Joe Biden's Approval Margins
-        url: blogs/joeb
+        url: blogs/joebiden
   two:
     buttonText: Explore
     enable: yes

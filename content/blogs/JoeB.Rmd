@@ -4,11 +4,28 @@ categories:
 - ""
 date: "2017-10-31T21:28:43-05:00"
 description: This section involves using the General Social Survey data to analyse information about social media and technology use. Analysis using confidence intervals allows us to asnwer questions like - "Do university graduates use twitter more or less than non-graduates?"
-image: cough.jpg
+image:
 keywords: ""
-slug: joeb
+slug: joebiden
 title: Joe Biden's Approval Margins
 ---
+
+```{r load-libraries, include=FALSE, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(here)
+library(skimr)
+library(janitor)
+library(httr)
+library(readxl)
+library(vroom)
+library(infer)
+```
+
+
+
 
 # Biden's Approval Margins
 
@@ -98,7 +115,7 @@ Compare the confidence intervals for `week 3` and `week 25`. Can you explain wha
 ```{r}
 #calculate the week4 and week5 confidence intervals
 margin_ci_comparison <- new_approval %>% 
-  filter(week==4 | week==25) %>% 
+  filter(week==3 | week==25) %>% 
   group_by(week) %>% 
   summarise(avg_approval_margin = mean(net_approve),
             sd_margin = sd(net_approve, na.rm=TRUE),
@@ -124,7 +141,7 @@ margin_ci_comparison %>%
 
 ```{r}
 comparison_approval <- new_approval %>% 
-  filter(week==4 | week==25)
+  filter(week==3 | week==25)
 
 t.test(net_approve ~ week, data = comparison_approval)
 #Based on the result below, we cannot reject the null hypothesis. 
