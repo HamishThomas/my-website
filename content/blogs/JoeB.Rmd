@@ -3,7 +3,7 @@ categories:
 - ""
 - ""
 date: "2017-10-31T21:28:43-05:00"
-description: This section involves using data from fivethirtyeight to plot Joe Biden's net approval rating over time, since his first day in office. 
+description: This section involves using data from 'fivethirtyeight' to plot Joe Biden's net approval rating over time, starting with his first day in office. 
 image: biden2.jpg
 keywords: ""
 slug: joebiden
@@ -42,7 +42,7 @@ glimpse(approval_polllist)
 ## Create a plot
 ***
 
-We are going to use the above data to calculate the average net approval rate (approve- disapprove) for each week since Joe Biden got into office. We will plot the net approval, along with its 95% confidence interval. There are various dates given for each poll, but we will use - `enddate`, i.e., the date the poll ended.
+We are going to use the above data to calculate the average net approval rate (approve - disapprove) for each week since Joe Biden got into office. We will plot the net approval, along with its 95% confidence interval. There are various dates given for each poll, but we will plot up to - `enddate`, i.e., the date the poll ended.
 
 
 ```{r}

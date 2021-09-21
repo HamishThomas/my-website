@@ -59,7 +59,7 @@ prop_gss</code></pre>
 ## 2 Yes                        514            0.375</code></pre>
 <pre class="r"><code># Question 3
 # This question is completed by grouping by &#39;sex&#39; and then calculate n, the standard deviation and the standard error to allow for calculation of the confidence intervals.  
-temp_gss %&gt;% 
+CI_gss2 &lt;- temp_gss %&gt;% 
   filter(snap_insta != &quot;NA&quot;) %&gt;% 
   mutate(snap_insta = snap_insta == &quot;Yes&quot;) %&gt;% 
   group_by(sex) %&gt;% 
@@ -69,7 +69,8 @@ temp_gss %&gt;%
             Standard_Error_Proportion = SD_Proportion / sqrt(Count_Proportion),
             Upper_CI_Proportion = Mean_Proportion + qt(.975, Count_Proportion-1)*Standard_Error_Proportion ,
             Lower_CI_Proportion = Mean_Proportion - qt(.975, Count_Proportion-1)*Standard_Error_Proportion 
-            )</code></pre>
+            )
+CI_gss2</code></pre>
 <pre><code>## # A tibble: 2 × 7
 ##   sex    Mean_Proportion SD_Proportion Count_Proportion Standard_Error_Proporti…
 ##   &lt;chr&gt;            &lt;dbl&gt;         &lt;dbl&gt;            &lt;int&gt;                    &lt;dbl&gt;

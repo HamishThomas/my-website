@@ -80,7 +80,7 @@ prop_gss
 ```{r}
 # Question 3
 # This question is completed by grouping by 'sex' and then calculate n, the standard deviation and the standard error to allow for calculation of the confidence intervals.  
-temp_gss %>% 
+CI_gss2 <- temp_gss %>% 
   filter(snap_insta != "NA") %>% 
   mutate(snap_insta = snap_insta == "Yes") %>% 
   group_by(sex) %>% 
@@ -91,6 +91,7 @@ temp_gss %>%
             Upper_CI_Proportion = Mean_Proportion + qt(.975, Count_Proportion-1)*Standard_Error_Proportion ,
             Lower_CI_Proportion = Mean_Proportion - qt(.975, Count_Proportion-1)*Standard_Error_Proportion 
             )
+CI_gss2
 ```
 
 The 95% confidence intervals for males and females above do not overlap. Therefore, we can say with reasonable certainty that a larger proportion of females use snapchat **or** instagram than males. 
