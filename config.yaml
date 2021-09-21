@@ -82,8 +82,8 @@ params:
         url: blogs/ipsum
       - name: The General Social Survey
         url: blogs/gss
-      - name: CDC COVID-19 Case Data
-        url: blogs/cdc
+      - name: Biden's Approval Margins
+        url: blogs/joeb
 #      - name: Elements
 #        url: elements.html
     menu: Menu
@@ -114,8 +114,8 @@ params:
         url: blogs/gss
       - image: swab.jpg
         subtitle: AM01 - Worked Example 2
-        title: CDC COVID-19 Case Surveillance
-        url: blogs/cdc
+        title: Joe Biden's Approval Margins
+        url: blogs/joeb
   two:
     buttonText: Explore
     enable: yes

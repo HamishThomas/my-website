@@ -6,8 +6,8 @@ date: "2017-10-31T21:28:43-05:00"
 description: This section involves using the General Social Survey data to analyse information about social media and technology use. Analysis using confidence intervals allows us to asnwer questions like - "Do university graduates use twitter more or less than non-graduates?"
 image: cough.jpg
 keywords: ""
-slug: cdc
-title: CDC Covid Case Surveillance
+slug: joeb
+title: Joe Biden's Approval Margins
 ---
 
 The [CDC Covid-19 Case Surveillance Data](https://data.cdc.gov/Case-Surveillance/COVID-19-Case-Surveillance-Public-Use-Data/vbim-akqf) is a case surveillance public use dataset with 12 elements for all COVID-19 cases shared with CDC and includes demographics, any exposure history, disease severity indicators and outcomes, presence of any underlying medical conditions and risk behaviors. You can see the variables from 
