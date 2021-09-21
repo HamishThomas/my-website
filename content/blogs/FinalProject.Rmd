@@ -3,7 +3,7 @@ categories:
 - ""
 - ""
 date: "2017-10-31T21:28:43-05:00"
-description: This section is taken from the Final Group Project in the AM01 - Applied Statistics course. This project involved downloading and cleaning the "Ask a Manager" survey results, which were subsequently used to analyse which factors most affected managerial salaries. 
+description: This section is taken from the Final Group Project in the AM01 - Applied Statistics course. This project involved downloading, cleaning, exploring and analysing the "Ask a Manager" survey results.
 image: Manager.jpg
 keywords: ""
 slug: ipsum

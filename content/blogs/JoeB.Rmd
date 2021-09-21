@@ -3,7 +3,7 @@ categories:
 - ""
 - ""
 date: "2017-10-31T21:28:43-05:00"
-description: This section involves using the General Social Survey data to analyse information about social media and technology use. Analysis using confidence intervals allows us to asnwer questions like - "Do university graduates use twitter more or less than non-graduates?"
+description: This section involves using data from fivethirtyeight to plot the Joe Biden's net approval rating over time, since his first day in office. 
 image: biden2.jpg
 keywords: ""
 slug: joebiden
