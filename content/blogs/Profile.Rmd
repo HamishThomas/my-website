@@ -7,7 +7,7 @@ description: An overview of my profile - including my education, professional ex
 image: footy.jpg
 keywords: ""
 slug: tempus
-title: Profile and Curriculum Vitae
+title: Profile
 ---
 ***
 ## Education
