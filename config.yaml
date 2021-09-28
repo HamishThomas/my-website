@@ -97,7 +97,7 @@ params:
         title: About Me
         url: blogs/hamish
       - image: Imperial.jpg
-        subtitle: Including Curriculum Vitae
+        subtitle: Including completed Experiences and Projects
         title: Profile
         url: blogs/tempus
       - image: earth.jpg

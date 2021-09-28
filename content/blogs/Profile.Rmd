@@ -3,7 +3,7 @@ categories:
 - ""
 - ""
 date: "2017-10-31T22:26:13-05:00"
-description: An overview of my profile - including my education, professional experience, volunteer work, co-curricular activities and more. Attached within this section is my curriculum vitae. 
+description: An overview of my profile - including my education, professional experience, volunteer work, co-curricular activities and more.
 image: footy.jpg
 keywords: ""
 slug: tempus
@@ -33,10 +33,6 @@ Captain of the First XI Football Team.
 ***
 ## Experience
 ***
-### October 2021 - Present.
-**Impact** **Consulting** **Project**  
-During this academic year I hope to be working on the "Impact Consulting Project" - offering pro-bono consulting advice to different clients.
-
 ### December 2018 - Present. (part-time)
 **Guy's** **&** **St** **Thomas'** **NHS** **Foundation** **Trust** - **Administration** **Assistant**  
 Currently work part-time (predominantly during the summer) in administration at the National Health Service.
@@ -110,14 +106,4 @@ knitr::include_graphics("/img/01337679-Research Paper-HT.pdf", error=FALSE)
 * Qualified F.A. Football Coach with experience in multiple schools and clubs. 
 * 2x winner of the School Sports Prize.
 * Languages: English (Native), German (Conversational), French (Basic)
-
-
-
-***
-## Curriculum Vitae
-***
-
-```{r picture5, echo=FALSE, out.width = "100%", include=TRUE, out.height = 1000}
-knitr::include_graphics("/img/HT_CV.pdf", error=FALSE)
-```
 
