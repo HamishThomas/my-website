@@ -1,0 +1,109 @@
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T22:26:13-05:00"
+description: An overview of my profile - including my education, professional experience, volunteer work, co-curricular activities and more.
+image: footy.jpg
+keywords: ""
+slug: profile
+title: Profile
+---
+***
+## Education
+***
+### 2021 - present.
+**London** **Businesss** **School**  
+Reading for a Masters in Analytics and Management  
+Member of the Consulting Club, Technology & Media Club and Sports Business Club.
+
+### 2017 - 2021
+**Imperial** **College** **London**  
+MEng Civil Engineering - First Class Honours  
+Winner of the 2019 Design Prize and 2021 Fluid Mechanics Dissertation Award.  
+Member of German Horizons, the Civil Engineering Society and Vice-Captain of the Royal School of Mines Football Club.
+
+### 2010 - 2017
+**Sevenoaks** **School**  
+43 points in IB Diploma and 11 A* iGCSEs  
+Captain of the First XI Football Team.  
+  
+ 
+
+***
+## Experience
+***
+### December 2018 - Present. (part-time)
+**Guy's** **&** **St** **Thomas'** **NHS** **Foundation** **Trust** - **Administration** **Assistant**  
+Currently work part-time (predominantly during the summer) in administration at the National Health Service.
+
+### June 2019 (1 month)
+**AJ** **Morrisroe** **&** **Sons** -  **Project** **Manager** - **Finance**  
+Completed a "Constructionarium Ltd" engineering project where, in a team, I planned, costed and constructed a scaled version of the Naples Underground Canopy Roof. 
+
+### September 2018 (1 month)
+**Network** **Rail** (**Crossrail** **Ltd**) - **Summer** **Intern**  
+Worked across multiple facets of the Crossrail project. Analysed both data and case-studies to produce a detailed report on how the Crossrail project should evolve over the next 30 years. 
+
+### August 2016 (1 week)
+**Sevenoaks** **School** - **Teaching** **Assistant**  
+Recognised for my work on a voluntary teaching programme - I was offered a job as a teaching assistant at a Science Summer Camp. 
+
+### July - August 2016 (2 months)
+**IAV** **GmbH** (**Automotive** **Consulting**) - **Summer** **Intern**  
+Worked within a diverse team of engineers during a summer internship at a large automotive consultancy in Berlin. Assisted the team in preparing reports on a variety of internal combustion engines.
+
+### July - August 2015 (2 months)
+**Amnet** **Group** (**Digital** **Advertising**) - **Summer** **Intern**  
+Undertook training for programmatic DSP websites. Analysed and presented data using Excel and Datorama, demonstrating which adverts were gaining most traction in different user pools. 
+
+```{r picture2_3, echo=FALSE, out.width="50%", out.extra='style="background-color:white;padding:5px"'}
+knitr::include_graphics("/img/NAPLES2.jpg", error = FALSE)
+knitr::include_graphics("/img/IAV.jpg", error = FALSE)
+```
+
+*Above* *[left]*: The Naples underground canpoy roof that my team built during the Constructionarium project.  
+*Above* *[right]*: The location of the IAV GmbH test site in Berlin, Germany.  
+
+
+
+***
+## Projects
+***
+
+### July 2021 - Imperial College London - Final Dissertation
+**Simulating** **the** **Effect** **of** **Droplet** **Size** **on** **COVID-19** **Particle** **Dispersion** - Supervised by Dr Maarten Van Reeuwijk.
+
+```{r label, echo=FALSE, out.width = "100%", include=TRUE, out.height = 600}
+knitr::include_graphics("/img/01337679-Research Paper-HT.pdf", error=FALSE)
+```
+
+
+***
+## Volunteer Work
+***
+
+**Summer** **2021** - **present**: The Liberal Democrat Party   
+**2015** - **2016**: Weald Community Primary School - Football Coach  
+**2015** - **2016**: Sevenoaks School - Science Teacher  
+**2014** - **2015**: Weald Wolves Football Club - Coach  
+**2014** - **2015**: Solefield School - Sports Coach  
+**2013** - **2014**: Lady Boswell's Primary School - Teaching Assistant
+
+
+***
+## Skills and Additional Information
+***
+
+### Main Personal Skills: 
+* Problem Solving and Analytical Analysis
+* Leadership and Teamwork
+* Presentation and Discussion
+* Creative Thinking and Adaptability
+
+### Other Skills and Information:
+* Advanced Knowledge of MATLAB, Python, Adobe Illustrator, Microsoft Excel, and R (almost!).
+* Qualified F.A. Football Coach with experience in multiple schools and clubs. 
+* 2x winner of the School Sports Prize.
+* Languages: English (Native), German (Conversational), French (Basic)
+

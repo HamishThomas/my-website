@@ -75,7 +75,7 @@ params:
       - name: About Me
         url: blogs/hamish
       - name: Profile
-        url: blogs/tempus
+        url: blogs/profile
       - name: Gapminder & Brexit Analysis
         url: blogs/magna
       - name: Group 2 - Final Project
@@ -99,7 +99,7 @@ params:
       - image: Imperial.jpg
         subtitle: Including completed Experiences and Projects
         title: Profile
-        url: blogs/tempus
+        url: blogs/profile
       - image: earth.jpg
         subtitle: AM01 - Pre-Programme Assignment
         title: Gapminder & Brexit Data Analysis
